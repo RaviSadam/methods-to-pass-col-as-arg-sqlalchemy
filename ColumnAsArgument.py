@@ -52,10 +52,10 @@ branch_param = bindparam("branch_param", value="CSE")
 
 # creating the query to select the student details
 # whose branch column matches with the brach_param value
-query = session.query(Student).filter(branch_param == Student.branch)
+bindparamQuery = session.query(Student).filter(branch_param == Student.branch)
 
 # executing the query
-result = query.all()
+result = bindparamQuery.all()
 
 print("Bind Param Output")
 print("____________________")
@@ -68,10 +68,10 @@ for row in result:
 
 #creating the query to select the student details 
 # whose branch is ECE 
-query=session.query(Student).filter(literal_column("branch")=="ECE")
+literalColumnQuery=session.query(Student).filter(literal_column("branch")=="ECE")
 
 #executing the query
-result=query.all()
+result=literalColumnQuery.all()
 
 print("literal_column output")
 print("____________________")
@@ -87,10 +87,10 @@ session.close()
 
 # creating the query to select the student details
 # whose branch is ECE
-query = session.query(Student).filter(getattr(Student, "branch") == "ECE")
+getAttrQuery = session.query(Student).filter(getattr(Student, "branch") == "ECE")
 
 # executing the query
-result = query.all()
+result = getAttrQuery.all()
 
 print("getattr output")
 print("____________________")
